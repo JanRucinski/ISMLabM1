@@ -1,0 +1,19 @@
+/* event-list.component.css */
+
+.event-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .event-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .no-events {
+    text-align: center;
+    color: #888;
+    margin-top: 20px;
+  }
+  

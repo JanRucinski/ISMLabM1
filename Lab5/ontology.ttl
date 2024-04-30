@@ -1,0 +1,41 @@
+@prefix ex: <http://example.com/ontology#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+# Classes
+ex:Antiquity a rdfs:Class .
+ex:Ceramics a rdfs:Class .
+ex:Paintings a rdfs:Class .
+ex:Sculptures a rdfs:Class .
+ex:TimePeriod a rdfs:Class .
+ex:Origin a rdfs:Class .
+
+# Properties
+ex:hasQuality a rdf:Property ;
+    rdfs:domain ex:Antiquity ;
+    rdfs:range xsd:string .
+
+ex:hasTimePeriod a rdf:Property ;
+    rdfs:domain ex:Antiquity ;
+    rdfs:range ex:TimePeriod .
+
+ex:hasOrigin a rdf:Property ;
+    rdfs:domain ex:Antiquity ;
+    rdfs:range ex:Origin .
+
+# Subclass Relationships
+ex:GreekCeramics rdfs:subClassOf ex:Ceramics .
+
+# Hierarchy
+ex:Antiquity rdfs:subClassOf owl:Thing .
+
+# Instances
+ex:AncientGreekPeriod a ex:TimePeriod .
+ex:Athens a ex:Origin .
+
+ex:Vase a ex:Ceramics ;
+    ex:hasQuality "Excellent" ;
+    ex:hasTimePeriod ex:AncientGreekPeriod ;
+    ex:hasOrigin ex:Athens .

@@ -1,0 +1,17 @@
+<!-- event-list.component.html -->
+
+<h2>Event List</h2>
+
+<ul class="event-list">
+  <li *ngFor="let event of events" class="event-item">
+    <h3>{{ event.name }}</h3>
+    <p><strong>Date:</strong> {{ event.date }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>Description:</strong> {{ event.description }}</p>
+  </li>
+</ul>
+
+<!-- Add a message if there are no events -->
+<div *ngIf="events.length === 0" class="no-events">
+  No events available.
+</div>

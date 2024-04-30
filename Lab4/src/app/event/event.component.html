@@ -1,0 +1,15 @@
+<!-- event-details.component.html -->
+
+<div *ngIf="event" class="event-details">
+    <h2>{{ event!.eventId }}</h2>
+    <p><strong>Date:</strong> {{ event!.date }}</p>
+    <p><strong>Location:</strong> {{ event!.location }}</p>
+    <p><strong>Time:</strong> {{ event!.time }}</p>
+    <p><strong>Approved:</strong> {{ event!.approved }}</p>
+
+  </div>
+  
+  <div *ngIf="!event" class="no-event">
+    Event not found.
+  </div>
+  
