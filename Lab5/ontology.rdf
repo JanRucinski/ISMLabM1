@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:ns0="http://example.com/ontology#">
+
+  <rdfs:Class rdf:about="http://example.com/ontology#Antiquity">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://example.com/ontology#Ceramics">
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://example.com/ontology#Paintings">
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://example.com/ontology#Sculptures">
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://example.com/ontology#TimePeriod">
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://example.com/ontology#Origin">
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://example.com/ontology#hasQuality">
+    <rdfs:domain rdf:resource="http://example.com/ontology#Antiquity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://example.com/ontology#hasTimePeriod">
+    <rdfs:domain rdf:resource="http://example.com/ontology#Antiquity"/>
+    <rdfs:range rdf:resource="http://example.com/ontology#TimePeriod"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://example.com/ontology#hasOrigin">
+    <rdfs:domain rdf:resource="http://example.com/ontology#Antiquity"/>
+    <rdfs:range rdf:resource="http://example.com/ontology#Origin"/>
+  </rdf:Property>
+
+  <rdf:Description rdf:about="http://example.com/ontology#GreekCeramics">
+    <rdfs:subClassOf rdf:resource="http://example.com/ontology#Ceramics"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://example.com/ontology#AncientGreekPeriod">
+    <rdf:type rdf:resource="http://example.com/ontology#TimePeriod"/>
+    <ns0:periodName xml:lang="en">Ancient Greek Period</ns0:periodName>
+  </rdf:Description>
+
+  <ns0:TimePeriod rdf:about="http://example.com/ontology#RenaissancePeriod">
+    <ns0:periodName xml:lang="en">Renaissance Period</ns0:periodName>
+  </ns0:TimePeriod>
+
+  <ns0:Origin rdf:about="http://example.com/ontology#Athens">
+    <ns0:originName xml:lang="en">Athens</ns0:originName>
+  </ns0:Origin>
+
+  <ns0:Origin rdf:about="http://example.com/ontology#Florence">
+    <ns0:originName xml:lang="en">Florence</ns0:originName>
+  </ns0:Origin>
+
+</rdf:RDF>

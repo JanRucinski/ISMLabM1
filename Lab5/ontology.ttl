@@ -32,10 +32,14 @@ ex:GreekCeramics rdfs:subClassOf ex:Ceramics .
 ex:Antiquity rdfs:subClassOf owl:Thing .
 
 # Instances
-ex:AncientGreekPeriod a ex:TimePeriod .
-ex:Athens a ex:Origin .
+ex:AncientGreekPeriod a ex:TimePeriod ;
+    ex:periodName "Ancient Greek Period"@en .
 
-ex:Vase a ex:Ceramics ;
-    ex:hasQuality "Excellent" ;
-    ex:hasTimePeriod ex:AncientGreekPeriod ;
-    ex:hasOrigin ex:Athens .
+ex:RenaissancePeriod a ex:TimePeriod ;
+    ex:periodName "Renaissance Period"@en .
+
+ex:Athens a ex:Origin ;
+    ex:originName "Athens"@en .
+
+ex:Florence a ex:Origin ;
+    ex:originName "Florence"@en .

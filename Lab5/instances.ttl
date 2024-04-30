@@ -1,0 +1,18 @@
+@prefix ex: <http://example.com/ontology#> .
+
+ex:Vase1 a ex:Ceramics ;
+    ex:hasQuality "Good" ;
+    ex:hasTimePeriod ex:AncientGreekPeriod ;
+    ex:hasOrigin ex:Athens .
+
+ex:Vase2 a ex:Ceramics ;
+    ex:hasQuality "Excellent" ;
+    ex:hasTimePeriod ex:RenaissancePeriod ;
+    ex:hasOrigin ex:Florence .
+
+ex:Painting1 a ex:Paintings ;
+    ex:hasQuality "Excellent" ;
+    ex:hasTimePeriod ex:RenaissancePeriod ;
+    ex:hasOrigin ex:Florence .
+
+# Add more instances as needed...

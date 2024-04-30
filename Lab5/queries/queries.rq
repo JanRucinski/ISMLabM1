@@ -1,0 +1,30 @@
+PREFIX ex: <http://example.com/ontology#>
+# 1
+SELECT ?ceramicInstance
+WHERE {
+   ?ceramicInstance a ex:Ceramics .
+}
+
+# 2
+SELECT ?instance ?quality
+WHERE {
+   ?instance ex:hasQuality ?quality .
+}
+
+# 3
+SELECT ?instance
+WHERE {
+   ?instance ex:hasTimePeriod ex:AncientGreekPeriod .
+}
+
+# 4
+SELECT ?instance
+WHERE {
+   ?instance ex:hasOrigin ex:Athens .
+}
+# 5
+SELECT ?ceramicInstance
+WHERE {
+   ?ceramicInstance a ex:Ceramics ;
+                   ex:hasQuality "Excellent" .
+}
