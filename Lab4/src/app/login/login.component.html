@@ -1,13 +1,16 @@
-<form action="http://localhost:8080/users/login" method="post">
-    <div>
-      <label for="email">Username:</label>
-      <input type="text" id="email" name="email" required>
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-    </div>
-    <div>
-      <input type="submit" value="Login">
-    </div>
-  </form>
+<!-- Button to go to homepage -->
+<button routerLink="/home">Home</button>
+
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <div>
+    <label for="email">Username:</label>
+    <input type="text" id="email" name="email" ngModel required>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" ngModel required>
+  </div>
+  <div>
+    <input type="submit" value="Login">
+  </div>
+</form>

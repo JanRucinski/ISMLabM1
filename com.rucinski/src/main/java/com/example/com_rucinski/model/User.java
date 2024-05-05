@@ -1,16 +1,15 @@
-package com.murad.sh.carbootsale.model;
+package com.example.com_rucinski.model;
 
 import jakarta.persistence.*;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-
-    @Column(nullable = false)
-    private String name;
+    private Integer userId;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -18,30 +17,23 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
-
-
-    public enum Role {
-        ORGANIZER,
-        SELLER
+    public User() {
+        // Default constructor
     }
 
-    public Long getUserId() {
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    // Getters and setters
+
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
@@ -60,22 +52,27 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(password, user.password);
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, email, password);
     }
 
-
-    public User() {
-    }
-
-    public User(String name, String email, String password, Role role) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

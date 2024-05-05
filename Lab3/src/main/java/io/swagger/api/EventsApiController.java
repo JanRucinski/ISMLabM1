@@ -108,6 +108,21 @@ public class EventsApiController implements EventsApi {
         return new ResponseEntity<List<Event>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
+    @Override
+    public ResponseEntity<Event> eventsEventIdGet(Integer eventId) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<Void> eventsEventIdDelete(Integer eventId) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<Void> eventsEventIdPut(Integer eventId, Event body) {
+        return null;
+    }
+
     public ResponseEntity<Void> eventsPost(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Event body
 ) {
         String accept = request.getHeader("Accept");

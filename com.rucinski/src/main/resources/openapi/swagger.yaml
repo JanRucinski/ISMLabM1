@@ -16,7 +16,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/UserDTO'
       responses:
         '201':
           description: User registered successfully
@@ -33,7 +33,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/UserDTO'
       responses:
         '200':
           description: Login successful
@@ -51,7 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UserDTO'
         '401':
           description: Not authenticated
 
@@ -65,7 +65,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Event'
+              $ref: '#/components/schemas/EventDTO'
       responses:
         '201':
           description: Event created
@@ -84,7 +84,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Event'
+                  $ref: '#/components/schemas/EventDTO'
 
   /events/{eventId}:
     get:
@@ -103,7 +103,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Event'
+                $ref: '#/components/schemas/EventDTO'
         '404':
           description: Event not found
 
@@ -122,7 +122,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Event'
+              $ref: '#/components/schemas/EventDTO'
       responses:
         '200':
           description: Event updated
@@ -174,7 +174,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Item'
+                  $ref: '#/components/schemas/ItemDTO'
         '404':
           description: Event not found
     post:
@@ -192,7 +192,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Item'
+              $ref: '#/components/schemas/ItemDTO'
       responses:
         '201':
           description: Item added
@@ -220,7 +220,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Item'
+              $ref: '#/components/schemas/ItemDTO'
       responses:
         '200':
           description: Item updated
@@ -259,11 +259,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Report'
+                $ref: '#/components/schemas/ReportDTO'
 
 components:
   schemas:
-    User:
+    UserDTO:
       type: object
       required:
         - email
@@ -275,7 +275,7 @@ components:
         password:
           type: string
 
-    Event:
+    EventDTO:
       type: object
       required:
         - location
@@ -295,7 +295,7 @@ components:
         eventId:
           type: integer
 
-    Item:
+    ItemDTO:
       type: object
       required:
         - name
@@ -311,7 +311,7 @@ components:
         itemId:
           type: integer
 
-    Report:
+    ReportDTO:
       type: object
       properties:
         totalNumberOfEvents:

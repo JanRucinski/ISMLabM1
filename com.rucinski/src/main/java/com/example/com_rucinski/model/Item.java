@@ -1,14 +1,15 @@
-package com.murad.sh.carbootsale.model;
+package com.example.com_rucinski.model;
 
 import jakarta.persistence.*;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "items")
 public class Item {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long itemId;
+    private Integer itemId;
 
     @Column(nullable = false)
     private String name;
@@ -17,21 +18,24 @@ public class Item {
     private String description;
 
     @Column(nullable = false)
-    private Double price;
+    private Float price;
 
-    @ManyToOne
-    @JoinColumn(name = "eventId", nullable = false)
-    private SaleEvent saleEvent;
+    public Item() {
+        // Default constructor
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
-    private User seller;
+    public Item(String name, Float price) {
+        this.name = name;
+        this.price = price;
+    }
 
-    public Long getItemId() {
+    // Getters and setters
+
+    public Integer getItemId() {
         return itemId;
     }
 
-    public void setItemId(Long itemId) {
+    public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
 
@@ -51,36 +55,37 @@ public class Item {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public SaleEvent getSaleEvent() {
-        return saleEvent;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Objects.equals(itemId, item.itemId) &&
+                Objects.equals(name, item.name) &&
+                Objects.equals(description, item.description) &&
+                Objects.equals(price, item.price);
     }
 
-    public void setSaleEvent(SaleEvent saleEvent) {
-        this.saleEvent = saleEvent;
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemId, name, description, price);
     }
 
-    public User getSeller() {
-        return seller;
-    }
-
-    public void setSeller(User seller) {
-        this.seller = seller;
-    }
-
-    public Item() {
-    }
-
-    public Item(String name, Double price, SaleEvent saleEvent) {
-        this.name = name;
-        this.price = price;
-        this.saleEvent = saleEvent;
+    @Override
+    public String toString() {
+        return "Item{" +
+                "itemId=" + itemId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

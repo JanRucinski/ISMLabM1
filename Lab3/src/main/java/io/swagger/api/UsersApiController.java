@@ -58,6 +58,7 @@ public class UsersApiController implements UsersApi {
     public ResponseEntity<Void> usersRegisterPost(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody UsersRegisterBody body
 ) {
         String accept = request.getHeader("Accept");
+
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 

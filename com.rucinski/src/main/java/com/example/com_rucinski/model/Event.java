@@ -3,15 +3,14 @@ package com.example.com_rucinski.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Objects;
 
 @Entity
 @Table(name = "events")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long eventId;
+    private Integer eventId;
 
     @Column(nullable = false)
     private String location;
@@ -22,32 +21,26 @@ public class Event {
     @Column(nullable = false)
     private String time;
 
-    @Column(nullable = false)
-    private String name;
-
     @Column
-    private String image;
+    private Boolean approved = false;
 
-    @Column(name = "contact_info")
-    private String contactInfo;
+    public Event() {
+        // Default constructor
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "event_organizer", referencedColumnName = "userId")
-    private User eventOrganizer;
+    public Event(String location, LocalDate date, String time) {
+        this.location = location;
+        this.date = date;
+        this.time = time;
+    }
 
-    @ManyToMany
-    @JoinTable(
-            name = "event_registered_users",
-            joinColumns = @JoinColumn(name = "event_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private Set<User> registeredUsers = new HashSet<>();
+    // Getters and setters
 
-    public Long getEventId() {
+    public Integer getEventId() {
         return eventId;
     }
 
-    public void setEventId(Long eventId) {
+    public void setEventId(Integer eventId) {
         this.eventId = eventId;
     }
 
@@ -75,55 +68,39 @@ public class Event {
         this.time = time;
     }
 
-    public String getName() {
-        return name;
+    public Boolean getApproved() {
+        return approved;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
     }
 
-    public String getImage() {
-        return image;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return Objects.equals(eventId, event.eventId) &&
+                Objects.equals(location, event.location) &&
+                Objects.equals(date, event.date) &&
+                Objects.equals(time, event.time) &&
+                Objects.equals(approved, event.approved);
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    @Override
+    public int hashCode() {
+        return Objects.hash(eventId, location, date, time, approved);
     }
 
-    public String getContactInfo() {
-        return contactInfo;
-    }
-
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
-    }
-
-    public User getEventOrganizer() {
-        return eventOrganizer;
-    }
-
-    public void setEventOrganizer(User eventOrganizer) {
-        this.eventOrganizer = eventOrganizer;
-    }
-
-    public Set<User> getRegisteredUsers() {
-        return registeredUsers;
-    }
-
-    public void setRegisteredUsers(Set<User> registeredUsers) {
-        this.registeredUsers = registeredUsers;
-    }
-
-    public SaleEvent() {
-    }
-
-    public SaleEvent(String location, LocalDate date, String time, String name,String contactInfo, String image) {
-        this.location = location;
-        this.date = date;
-        this.time = time;
-        this.name = name;
-        this.contactInfo = contactInfo;
-        this.image = image;
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventId=" + eventId +
+                ", location='" + location + '\'' +
+                ", date=" + date +
+                ", time='" + time + '\'' +
+                ", approved=" + approved +
+                '}';
     }
 }

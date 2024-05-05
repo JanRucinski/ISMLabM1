@@ -1,32 +1,36 @@
-package com.murad.sh.carbootsale.controller;
+package com.example.com_rucinski.controller;
 
-import com.murad.sh.api.UserAuthenticationApi;
-import com.murad.sh.model.SignInUser200Response;
-import com.murad.sh.model.SignInUserRequest;
-import com.murad.sh.model.SignUpUser201Response;
-import com.murad.sh.model.SignUpUserRequest;
+import com.example.api.RegistrationAndAuthenticationApi;
+import com.example.com_rucinski.service.UserService;
+import com.example.model.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import com.murad.sh.carbootsale.service.UserService;
 
 @RestController
-public class UsersController implements UserAuthenticationApi {
+public class UsersController implements RegistrationAndAuthenticationApi {
 
     @Autowired
     private UserService userService;
 
-
     @Override
-    public ResponseEntity<SignInUser200Response> signInUser(SignInUserRequest signInUserRequest) {
-        return new ResponseEntity<>(userService.signInUser(signInUserRequest), HttpStatus.OK);
+    public ResponseEntity<Void> usersLoginPost(UserDTO userDTO) {
+        boolean loginSuccessful = userService.signInUser(userDTO) != null;
+        if (loginSuccessful) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
     @Override
-    public ResponseEntity<SignUpUser201Response> signUpUser(SignUpUserRequest signUpUserRequest) {
-        return new ResponseEntity<>(userService.signUpUser(signUpUserRequest), HttpStatus.OK);
+    public ResponseEntity<Void> usersRegisterPost(UserDTO userDTO) {
+        UserDTO registeredUser = userService.signUpUser(userDTO);
+        if (registeredUser != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
-
-    
 }

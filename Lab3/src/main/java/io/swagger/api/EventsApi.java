@@ -110,6 +110,39 @@ public interface EventsApi {
         method = RequestMethod.GET)
     ResponseEntity<List<Event>> eventsGet();
 
+    @Operation(summary = "Get an event by ID", description = "", tags={ "Event Management" })
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Event found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))),
+
+        @ApiResponse(responseCode = "404", description = "Event not found") })
+    @RequestMapping(value = "/events/{eventId}",
+        produces = { "application/json" },
+        method = RequestMethod.GET)
+    ResponseEntity<Event> eventsEventIdGet(@Parameter(in = ParameterIn.PATH, description = "", required=true, schema=@Schema()) @PathVariable("eventId") Integer eventId
+);
+
+    @Operation(summary = "Delete an event", description = "", tags={ "Event Management" })
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "204", description = "Event deleted"),
+
+        @ApiResponse(responseCode = "404", description = "Event not found") })
+    @RequestMapping(value = "/events/{eventId}",
+        method = RequestMethod.DELETE)
+    ResponseEntity<Void> eventsEventIdDelete(@Parameter(in = ParameterIn.PATH, description = "", required=true, schema=@Schema()) @PathVariable("eventId") Integer eventId
+);
+
+    @Operation(summary = "Edit an event", description = "", tags={ "Event Management" })
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Event updated"),
+
+        @ApiResponse(responseCode = "404", description = "Event not found") })
+    @RequestMapping(value = "/events/{eventId}",
+        consumes = { "application/json" },
+        method = RequestMethod.PUT)
+    ResponseEntity<Void> eventsEventIdPut(@Parameter(in = ParameterIn.PATH, description = "", required=true, schema=@Schema()) @PathVariable("eventId") Integer eventId
+, @Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Event body
+);
+
 
     @Operation(summary = "Create an event", description = "", tags={ "Event Management" })
     @ApiResponses(value = { 
