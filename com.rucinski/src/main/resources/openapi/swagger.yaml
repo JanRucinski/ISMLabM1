@@ -1,0 +1,324 @@
+openapi: 3.0.3
+info:
+  title: Car Boot Sale Service
+  description: This service supports car boot sale event organization, inventory management, and provides reporting and analytics capabilities.
+  version: 1.0.0
+servers:
+  - url: https://localhost:8080/api
+paths:
+  /users/register:
+    post:
+      summary: User registration
+      tags:
+        - Registration and Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User registered successfully
+        '400':
+          description: Invalid input
+
+  /users/login:
+    post:
+      summary: User login
+      tags:
+        - Registration and Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Login successful
+        '401':
+          description: Authentication failed
+
+  /user:
+    get:
+      summary: Get user details
+      tags:
+        - Registration and Authentication
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Not authenticated
+
+  /events:
+    post:
+      summary: Create an event
+      tags:
+        - Event Management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        '201':
+          description: Event created
+        '400':
+          description: Invalid input
+
+    get:
+      summary: Get all events
+      tags:
+        - Event Management
+      responses:
+        '200':
+          description: An array of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+
+  /events/{eventId}:
+    get:
+      summary: Get event by ID
+      tags:
+        - Event Management
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Event details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '404':
+          description: Event not found
+
+    put:
+      summary: Update an event
+      tags:
+        - Event Management
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        '200':
+          description: Event updated
+        '404':
+          description: Event not found
+
+  /events/{eventId}/approval:
+    put:
+      summary: Approve or reject an event
+      tags:
+        - Event Management
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                approved:
+                  type: boolean
+      responses:
+        '200':
+          description: Event updated
+        '404':
+          description: Event not found
+
+  /events/{eventId}/items:
+    get:
+      summary: Get all items for an event
+      tags:
+        - Inventory Management
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: An array of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+        '404':
+          description: Event not found
+    post:
+      summary: Add an item to inventory
+      tags:
+        - Inventory Management
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '201':
+          description: Item added
+        '400':
+          description: Invalid input
+
+  /events/{eventId}/items/{itemId}:
+    put:
+      summary: Edit an item in inventory
+      tags:
+        - Inventory Management
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: itemId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '200':
+          description: Item updated
+        '404':
+          description: Item not found
+
+    delete:
+      summary: Delete an item from inventory
+      tags:
+        - Inventory Management
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: itemId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Item deleted
+        '404':
+          description: Item not found
+
+  /reports:
+    get:
+      summary: Generate sales report
+      tags:
+        - Reporting and Analytics
+      responses:
+        '200':
+          description: Statistics report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+
+    Event:
+      type: object
+      required:
+        - location
+        - date
+        - time
+      properties:
+        location:
+          type: string
+        date:
+          type: string
+          format: date
+        time:
+          type: string
+        approved:
+          type: boolean
+          default: false
+        eventId:
+          type: integer
+
+    Item:
+      type: object
+      required:
+        - name
+        - price
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+          format: float
+        itemId:
+          type: integer
+
+    Report:
+      type: object
+      properties:
+        totalNumberOfEvents:
+          type: integer
+        approvedNumberOfEvents:
+          type: integer
+        rejectedNumberOfEvents:
+          type: integer
+        averageNumberOfItemsPerEvent:
+          type: number
