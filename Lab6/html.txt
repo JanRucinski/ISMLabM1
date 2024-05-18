@@ -1,0 +1,14 @@
+<head>
+  <script type="module" src="/@vite/client"></script>
+
+  <meta charset="utf-8">
+  <title>ItSys</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="styles.css"><script _ngcontent-ng-c2763124036="" type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Welcome to My Website","description":"Home works! This is my web page using JSON-LD annotations","mainEntity":{"@type":"Article","headline":"Sample Article","author":{"@type":"Person","name":"Jan Ruciński"},"datePublished":"2024-05-17","articleBody":"This is the body of the sample article.","publisher":{"@type":"Organization","name":"My Website"}}}</script></head>
+<body>
+  <app-root _nghost-ng-c3984273398="" ng-version="17.3.5"><router-outlet _ngcontent-ng-c3984273398=""></router-outlet><app-home _nghost-ng-c2763124036=""><div _ngcontent-ng-c2763124036="" vocab="http://schema.org/" typeof="WebPage"><header _ngcontent-ng-c2763124036=""><h1 _ngcontent-ng-c2763124036="" property="headline">Welcome to My Website</h1><p _ngcontent-ng-c2763124036="" property="description">Home works! This is an example web page using RDFa annotations</p></header><main _ngcontent-ng-c2763124036=""><nav _ngcontent-ng-c2763124036=""><button _ngcontent-ng-c2763124036="" routerlink="/event-list" property="url" typeof="WebPage" tabindex="0" ng-reflect-router-link="/event-list">Event List</button><button _ngcontent-ng-c2763124036="" routerlink="/register" property="url" typeof="WebPage" tabindex="0" ng-reflect-router-link="/register">Registration</button><button _ngcontent-ng-c2763124036="" routerlink="/login" property="url" typeof="WebPage" tabindex="0" ng-reflect-router-link="/login">Login</button></nav></main></div></app-home><!--container--></app-root>
+<script src="polyfills.js" type="module"></script><script src="main.js" type="module"></script>
+
+</body>

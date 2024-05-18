@@ -1,8 +1,13 @@
-<p>Home works!</p>
-
-<!-- List of buttons for each component -->
-<nav>
-  <button routerLink="/event-list">Event List</button>
-  <button routerLink="/register">Registration</button>
-  <button routerLink="/login">Login</button>
-</nav>
+<div vocab="http://schema.org/" typeof="WebPage">
+  <header>
+    <h1 property="headline">Welcome to My Website</h1>
+    <p property="description">Home works! This is an example web page using RDFa annotations</p>
+  </header>
+  <main>
+    <nav>
+      <button routerLink="/event-list" property="url" typeof="WebPage">Event List</button>
+      <button routerLink="/register" property="url" typeof="WebPage">Registration</button>
+      <button routerLink="/login" property="url" typeof="WebPage">Login</button>
+    </nav>
+  </main>
+</div>
