@@ -1,0 +1,24 @@
+@prefix : <http://example.org/ontologies/family#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+:hasChild a rdf:Property ;
+         rdfs:domain :Parent ;
+         rdfs:range :Child .
+:adam :hasChild :abel .
+:adam :hasChild :kain .
+:abel a :Parent .
+
+:Person a rdfs:Class .
+:Man a rdfs:Class .
+:Woman a rdfs:Class .
+:hasWife a rdf:Property ;
+         rdfs:domain :Man ;
+         rdfs:range :Woman .
+         
+:john :hasWife :mary . 
+:mary rdf:type :Man .
+
+         
+

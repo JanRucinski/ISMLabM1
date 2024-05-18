@@ -15,4 +15,22 @@ ex:Painting1 a ex:Paintings ;
     ex:hasTimePeriod ex:RenaissancePeriod ;
     ex:hasOrigin ex:Florence .
 
-# Add more instances as needed...
+ex:Vase3 a ex:Ceramics ; 
+    ex:hasQuality "Average" ; 
+    ex:hasTimePeriod ex:ModernPeriod ; 
+    ex:hasOrigin ex:Paris .
+
+ex:Vase4 a ex:Ceramics ; 
+    ex:hasQuality "Good" ; 
+    ex:hasTimePeriod ex:AncientRomanPeriod ; 
+    ex:hasOrigin ex:Rome .
+
+ex:Painting2 a ex:Paintings ; 
+    ex:hasQuality "Good" ; 
+    ex:hasTimePeriod ex:BaroquePeriod ; 
+    ex:hasOrigin ex:Venice .
+
+ex:Painting3 a ex:Paintings ; 
+    ex:hasQuality "Average" ; 
+    ex:hasTimePeriod ex:ModernPeriod ; 
+    ex:hasOrigin ex:NewYork .
