@@ -1,5 +1,3 @@
-@prefix ex: <http://example.com/ontology#> .
-
 ex:Vase1 a ex:Ceramics ;
     ex:hasQuality "Good" ;
     ex:hasTimePeriod ex:AncientGreekPeriod ;

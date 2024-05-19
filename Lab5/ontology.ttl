@@ -25,21 +25,48 @@ ex:hasOrigin a rdf:Property ;
     rdfs:domain ex:Antiquity ;
     rdfs:range ex:Origin .
 
-# Subclass Relationships
-ex:GreekCeramics rdfs:subClassOf ex:Ceramics .
+ex:periodName a rdf:Property ;
+    rdfs:domain ex:TimePeriod ;
+    rdfs:range xsd:string .
+
+ex:originName a rdf:Property ;
+    rdfs:domain ex:Origin ;
+    rdfs:range xsd:string .
+
 
 # Hierarchy
 ex:Antiquity rdfs:subClassOf owl:Thing .
 
 # Instances
 ex:AncientGreekPeriod a ex:TimePeriod ;
-    ex:periodName "Ancient Greek Period"@en .
+    ex:periodName "Ancient Greek Period".
 
 ex:RenaissancePeriod a ex:TimePeriod ;
-    ex:periodName "Renaissance Period"@en .
+    ex:periodName "Renaissance Period".
+
+ex:ModernPeriod a ex:TimePeriod ;
+    ex:periodName "Modern Period".
+
+ex:AncientRomanPeriod a ex:TimePeriod ;
+    ex:periodName "Ancient Roman Period".
+
+ex:BaroquePeriod a ex:TimePeriod ;
+    ex:periodName "Baroque Period".
 
 ex:Athens a ex:Origin ;
-    ex:originName "Athens"@en .
+    ex:originName "Athens".
 
 ex:Florence a ex:Origin ;
-    ex:originName "Florence"@en .
+    ex:originName "Florence".
+
+ex:Paris a ex:Origin ;
+    ex:originName "Paris".
+
+ex:Rome a ex:Origin ;
+    ex:originName "Rome".
+
+ex:Venice a ex:Origin ;
+    ex:originName "Venice".
+
+ex:NewYork a ex:Origin ;
+    ex:originName "New York".
