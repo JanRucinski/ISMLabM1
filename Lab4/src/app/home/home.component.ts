@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
         }
       }
     };
-
+// do poprawy nie-static, type
     const script = this.renderer.createElement('script');
     script.type = 'application/ld+json';
     script.text = JSON.stringify(jsonLd);
