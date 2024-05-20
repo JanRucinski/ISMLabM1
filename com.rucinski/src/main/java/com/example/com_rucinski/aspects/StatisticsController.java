@@ -12,15 +12,37 @@ public class StatisticsController {
     private StatisticsAspect statisticsAspect;
 
     @GetMapping("/api/statistics")
-    public ResponseEntity getStatistics() {
-        return ResponseEntity.ok(statisticsAspect.getGetAllEventsCallCount());
+    public ResponseEntity<StatisticsDTO> getStatistics() {
+        StatisticsDTO statistics = new StatisticsDTO(
+                statisticsAspect.getGetAllEventsCallCount(),
+                statisticsAspect.getTotalEventsRetrievedCount()
+        );
+        return ResponseEntity.ok(statistics);
     }
 }
 
 class StatisticsDTO {
     private int getAllEventsCallCount;
+    private long totalEventsRetrievedCount;
 
-    public StatisticsDTO(int getAllEventsCallCount) {
+    public StatisticsDTO(int getAllEventsCallCount, long totalEventsRetrievedCount) {
         this.getAllEventsCallCount = getAllEventsCallCount;
+        this.totalEventsRetrievedCount = totalEventsRetrievedCount;
+    }
+
+    public int getGetAllEventsCallCount() {
+        return getAllEventsCallCount;
+    }
+
+    public void setGetAllEventsCallCount(int getAllEventsCallCount) {
+        this.getAllEventsCallCount = getAllEventsCallCount;
+    }
+
+    public long getTotalEventsRetrievedCount() {
+        return totalEventsRetrievedCount;
+    }
+
+    public void setTotalEventsRetrievedCount(long totalEventsRetrievedCount) {
+        this.totalEventsRetrievedCount = totalEventsRetrievedCount;
     }
 }

@@ -17,10 +17,6 @@ ex:hasQuality a rdf:Property ;
     rdfs:domain ex:Antiquity ;
     rdfs:range xsd:string .
 
-ex:hasTimePeriod a rdf:Property ;
-    rdfs:domain ex:Antiquity ;
-    rdfs:range ex:TimePeriod .
-
 ex:hasOrigin a rdf:Property ;
     rdfs:domain ex:Antiquity ;
     rdfs:range ex:Origin .
